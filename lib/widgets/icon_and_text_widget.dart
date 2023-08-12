@@ -1,3 +1,4 @@
+import 'package:enat_guada/util/dimentions.dart';
 import 'package:enat_guada/widgets/small_text.dart';
 import 'package:flutter/material.dart';
 
@@ -19,6 +20,7 @@ class IconAndTextWidget extends StatelessWidget {
         Icon(
           icon,
           color: iconColor,
+          size: Dimensions.iconSize24,
         ),
         SizedBox(
           width: 5,
