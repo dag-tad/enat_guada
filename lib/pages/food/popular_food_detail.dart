@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../util/app_colors.dart';
 import '../../util/dimentions.dart';
 import '../../widgets/big_text.dart';
+import '../../widgets/expandable_text.dart';
 import '../../widgets/food_item_card.dart';
 
 class PopularFoodDetail extends StatelessWidget {
@@ -66,10 +67,19 @@ class PopularFoodDetail extends StatelessWidget {
                     SizedBox(
                       height: Dimensions.height20,
                     ),
-                    BigText(text: "Introduce")
+                    BigText(text: "Introduce"),
+                    SizedBox(
+                      height: Dimensions.height20,
+                    ),
+                    Expanded(
+                      child: SingleChildScrollView(
+                          child: ExpandableText(
+                              text:
+                                  "Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. ")),
+                    )
                   ],
                 )),
-          )
+          ),
         ],
       ),
       bottomNavigationBar: Container(
@@ -119,7 +129,7 @@ class PopularFoodDetail extends StatelessWidget {
               decoration: BoxDecoration(
                   color: AppColors.mainColor,
                   borderRadius: BorderRadius.circular(Dimensions.radius20)),
-              child: BigText(text: "\$10 | Add to cart", color: Colors.white),
+              child: BigText(text: "\$10 Add to cart", color: Colors.white),
             )
           ],
         ),
