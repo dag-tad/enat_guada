@@ -1,4 +1,4 @@
-import 'package:enat_guada/home/food_page_body.dart';
+import 'package:enat_guada/pages/home/food_page_body.dart';
 import 'package:enat_guada/util/app_colors.dart';
 import 'package:enat_guada/util/dimentions.dart';
 import 'package:enat_guada/widgets/big_text.dart';
