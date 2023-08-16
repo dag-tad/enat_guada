@@ -2,6 +2,7 @@ import 'package:enat_guada/controller/popular_product_controller.dart';
 import 'package:enat_guada/pages/food/recommended_food_detail.dart';
 import 'package:enat_guada/pages/home/food_page_body.dart';
 import 'package:enat_guada/pages/home/main_food_page.dart';
+import 'package:enat_guada/routes/route_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -23,13 +24,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.find<PopularProductController>().getPopularProductList();
     Get.find<RecommendedProductController>().getRecommendedProductList();
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      initialRoute: RouteHelper.initial,
+      getPages: RouteHelper.routes,
     );
   }
 }
@@ -46,12 +45,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'FlutterApp',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: const MainFoodPage()
     );
   }
