@@ -1,17 +1,25 @@
+import 'package:enat_guada/routes/route_helper.dart';
 import 'package:enat_guada/widgets/app_icon.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../controller/popular_product_controller.dart';
 import '../../util/app_colors.dart';
+import '../../util/app_constants.dart';
 import '../../util/dimentions.dart';
 import '../../widgets/big_text.dart';
 import '../../widgets/expandable_text.dart';
 import '../../widgets/food_item_card.dart';
 
 class PopularFoodDetail extends StatelessWidget {
-  const PopularFoodDetail({super.key});
+  final String productId;
+  const PopularFoodDetail({super.key, required this.productId});
 
   @override
   Widget build(BuildContext context) {
+    var product = Get.find<PopularProductController>().popularProductList[int.parse(productId)]; //.first((id) => id == productId);
+    // var product = Get.find<PopularProductController>().popularProductList.where((prod) => prod.id == productId).first;
+    // prod.first()
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -24,7 +32,7 @@ class PopularFoodDetail extends StatelessWidget {
               decoration: BoxDecoration(
                   image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: AssetImage("assets/image/food0.jpg"))),
+                      image: NetworkImage("${AppConstants.BASE_URL}${AppConstants.UPLOAD_URI}/${product.img}"))),
             ),
           ),
           Positioned(
@@ -34,7 +42,12 @@ class PopularFoodDetail extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                AppIcon(icon: Icons.arrow_back_ios),
+                GestureDetector(
+                  onTap: (){
+                    Get.toNamed(RouteHelper.initial);
+                  },
+                  child: AppIcon(icon: Icons.arrow_back_ios),
+                ),
                 AppIcon(icon: Icons.shopping_cart_outlined),
               ],
             ),
@@ -60,7 +73,7 @@ class PopularFoodDetail extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     FoodItemCard(
-                        text: "Chinese Side",
+                        text: product.name!,
                         titleFontSize: Dimensions.font26,
                         rating: 4.5,
                         comments: 1287),
@@ -74,8 +87,7 @@ class PopularFoodDetail extends StatelessWidget {
                     Expanded(
                       child: SingleChildScrollView(
                           child: ExpandableText(
-                              text:
-                                  "Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice. Chicken marinated in a spiced yoghurt is placed in a large pot, then layered with onions, fresh coriander cilantro, then par boiled lightly spiced rice.")),
+                              text: product.description!)),
                     )
                   ],
                 )),
@@ -129,7 +141,7 @@ class PopularFoodDetail extends StatelessWidget {
               decoration: BoxDecoration(
                   color: AppColors.mainColor,
                   borderRadius: BorderRadius.circular(Dimensions.radius20)),
-              child: BigText(text: "\$10 Add to cart", color: Colors.white),
+              child: BigText(text: "\$${product.price} Add to cart", color: Colors.white),
             )
           ],
         ),
