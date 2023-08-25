@@ -71,13 +71,11 @@ class PopularProductController extends GetxController {
   }
 
   void addItem(ProductModel product) {
-    // if (_quantity > 0) {
       _cart.addItem(product, _quantity);
       _quantity = 0;
       _inCartItems = _cart.getQuantity(product);
-    // } else {
-    //   Get.snackbar("Item count", "Quantity must be greater than 0!",
-    //       backgroundColor: AppColors.mainColor, colorText: Colors.white);
-    // }
+      update();
   }
+
+  int get totalItems => _cart.totalItems;
 }
