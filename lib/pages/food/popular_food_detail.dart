@@ -9,6 +9,7 @@ import '../../util/app_colors.dart';
 import '../../util/app_constants.dart';
 import '../../util/dimentions.dart';
 import '../../widgets/big_text.dart';
+import '../../widgets/cart_button.dart';
 import '../../widgets/expandable_text.dart';
 import '../../widgets/food_item_card.dart';
 
@@ -53,34 +54,7 @@ class PopularFoodDetail extends StatelessWidget {
                   child: AppIcon(icon: Icons.arrow_back_ios),
                 ),
                 GetBuilder<PopularProductController>(builder: (controller) {
-                  return Stack(
-                    children: [
-                      AppIcon(icon: Icons.shopping_cart_outlined),
-                      controller.totalItems >= 1
-                          ? Positioned(
-                              top: 0,
-                              right: 0,
-                              child: AppIcon(
-                                icon: Icons.circle,
-                                size: 20,
-                                iconColor: Colors.transparent,
-                                backgroundColor: AppColors.mainColor,
-                              ),
-                            )
-                          : Container(),
-                      controller.totalItems >= 1
-                          ? Positioned(
-                              top: 3,
-                              right: 6,
-                              child: BigText(
-                                text: controller.totalItems.toString(),
-                                color: Colors.white,
-                                size: 12,
-                              ),
-                            )
-                          : Container(),
-                    ],
-                  );
+                  return CartButton(totalItems: controller.totalItems,);
                 })
               ],
             ),

@@ -11,6 +11,7 @@ import '../../util/app_colors.dart';
 import '../../util/app_constants.dart';
 import '../../util/dimentions.dart';
 import '../../widgets/big_text.dart';
+import '../../widgets/cart_button.dart';
 
 class RecommendedFoodDetail extends StatelessWidget {
   final String productId;
@@ -40,34 +41,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                       icon: Icons.clear,
                     )),
                 GetBuilder<PopularProductController>(builder: (controller) {
-                  return Stack(
-                    children: [
-                      AppIcon(icon: Icons.shopping_cart_outlined),
-                      controller.totalItems >= 1
-                          ? Positioned(
-                              top: 0,
-                              right: 0,
-                              child: AppIcon(
-                                icon: Icons.circle,
-                                size: 20,
-                                iconColor: Colors.transparent,
-                                backgroundColor: AppColors.mainColor,
-                              ),
-                            )
-                          : Container(),
-                      controller.totalItems >= 1
-                          ? Positioned(
-                              top: 3,
-                              right: 6,
-                              child: BigText(
-                                text: controller.totalItems.toString(),
-                                color: Colors.white,
-                                size: 12,
-                              ),
-                            )
-                          : Container(),
-                    ],
-                  );
+                  return CartButton(totalItems: controller.totalItems,);
                 })
               ],
             ),
