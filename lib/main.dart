@@ -1,4 +1,5 @@
 import 'package:enat_guada/controller/popular_product_controller.dart';
+import 'package:enat_guada/pages/cart/cart_page.dart';
 import 'package:enat_guada/pages/food/recommended_food_detail.dart';
 import 'package:enat_guada/pages/home/food_page_body.dart';
 import 'package:enat_guada/pages/home/main_food_page.dart';
@@ -26,7 +27,8 @@ class MyApp extends StatelessWidget {
     Get.find<RecommendedProductController>().getRecommendedProductList();
     return GetMaterialApp(
       title: 'Flutter Demo',
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MainFoodPage(),
+      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
       initialRoute: RouteHelper.initial,
       getPages: RouteHelper.routes,
     );

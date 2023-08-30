@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../data/repository/popular_product_repo.dart';
+import '../models/cart_model.dart';
 
 class PopularProductController extends GetxController {
   final PopularProductRepo popularProductRepo;
@@ -48,6 +49,11 @@ class PopularProductController extends GetxController {
       Get.snackbar("Item count", "Quantity must be greater than 0!",
           backgroundColor: AppColors.mainColor, colorText: Colors.white);
       return -_inCartItems;
+      // if (_inCartItems > 0){
+      //   _quantity = -_inCartItems;
+      //   return _quantity;
+      // }
+      // return 0;
     } else if ((_inCartItems + qty) > 20) {
       Get.snackbar("Item count", "Quantity must be less than 20!",
           backgroundColor: AppColors.mainColor, colorText: Colors.white);
@@ -78,4 +84,6 @@ class PopularProductController extends GetxController {
   }
 
   int get totalItems => _cart.totalItems;
+
+  List<CartModel> get getItems => _cart.getItems;
 }

@@ -1,4 +1,6 @@
+import 'package:enat_guada/routes/route_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../util/app_colors.dart';
 import 'app_icon.dart';
@@ -12,7 +14,16 @@ class CartButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        AppIcon(icon: Icons.shopping_cart_outlined),
+        GestureDetector(
+          onTap: () {
+            if (totalItems >= 1) {
+              Get.toNamed(RouteHelper.getCartPage());
+            }
+          },
+          child: AppIcon(
+            icon: Icons.shopping_cart_outlined,
+          ),
+        ),
         totalItems >= 1
             ? Positioned(
                 top: 0,
