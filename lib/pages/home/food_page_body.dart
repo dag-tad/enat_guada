@@ -122,7 +122,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                        Get.toNamed(RouteHelper.getRecommendedFood(index));
+                        Get.toNamed(RouteHelper.getRecommendedFood(index, "home"));
                       },
                       child: Container(
                         margin: EdgeInsets.only(
@@ -235,22 +235,27 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       transform: matrix4,
       child: GestureDetector(
         onTap: () {
-          Get.toNamed(RouteHelper.getPopularFood(index));
+          // Get.toNamed(RouteHelper.getPopularFood(index, "home"));
         },
         child: Stack(
           children: [
-            Container(
-              margin: EdgeInsets.symmetric(
-                horizontal: Dimensions.width10,
-              ),
-              height: Dimensions.pageViewContainer,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Dimensions.radius30),
-                color: index.isEven ? Color(0xFF69C5DF) : Color(0xFF9294CC),
-                image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(
-                        "${AppConstants.BASE_URL}${AppConstants.UPLOAD_URI}/${product.img!}")),
+            GestureDetector(
+              onTap: (){
+                Get.toNamed(RouteHelper.getPopularFood(index, "home"));
+              },
+              child: Container(
+                margin: EdgeInsets.symmetric(
+                  horizontal: Dimensions.width10,
+                ),
+                height: Dimensions.pageViewContainer,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(Dimensions.radius30),
+                  color: index.isEven ? Color(0xFF69C5DF) : Color(0xFF9294CC),
+                  image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage(
+                          "${AppConstants.BASE_URL}${AppConstants.UPLOAD_URI}/${product.img!}")),
+                ),
               ),
             ),
             Align(
