@@ -207,6 +207,60 @@ class CartPage extends StatelessWidget {
           ),
         ],
       ),
+      bottomNavigationBar: GetBuilder<CartController>(
+        builder: (cart) {
+          return Container(
+            height: Dimensions.bottomHeightBar,
+            padding: EdgeInsets.symmetric(
+              vertical: Dimensions.height30,
+              horizontal: Dimensions.width20,
+            ),
+            decoration: BoxDecoration(
+              color: AppColors.buttonBackgroundColor,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(Dimensions.radius20 * 2),
+                topRight: Radius.circular(Dimensions.radius20 * 2),
+              ),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: Dimensions.width20,
+                      vertical: Dimensions.height20 - 1),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(Dimensions.radius20),
+                      color: Colors.white),
+                  child: Row(
+                    children: [
+                      SizedBox(width: Dimensions.width10 / 2),
+                      BigText(text: "\$ ${cart.totalAmount}"),
+                      SizedBox(width: Dimensions.width10 / 2),
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: Dimensions.width20,
+                    vertical: Dimensions.height20 - 1,
+                  ),
+                  decoration: BoxDecoration(
+                      color: AppColors.mainColor,
+                      borderRadius: BorderRadius.circular(Dimensions.radius20)),
+                  child: GestureDetector(
+                      onTap: () {
+                        // popularProduct.addItem(product);
+                      },
+                      child: BigText(
+                          text: "Checkout",
+                          color: Colors.white)),
+                )
+              ],
+            ),
+          );
+        },
+      )
     );
   }
 }
