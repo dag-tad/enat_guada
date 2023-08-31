@@ -44,6 +44,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
   @override
   void disppse() {
     pageController.dispose();
+    super.dispose();
   }
 
   @override
