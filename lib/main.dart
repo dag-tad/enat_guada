@@ -12,7 +12,7 @@ import 'package:enat_guada/helper/dependencies.dart' as dep;
 
 import 'controller/recommended_product_controller.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dep.init();
   runApp(const MyApp());
@@ -23,15 +23,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.find<PopularProductController>().getPopularProductList();
-    Get.find<RecommendedProductController>().getRecommendedProductList();
-    return GetMaterialApp(
-      title: 'Flutter Demo',
-      // home: MainFoodPage(),
-      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      initialRoute: RouteHelper.getInitial(),
-      getPages: RouteHelper.routes,
-    );
+    return GetBuilder<PopularProductController>(builder: (_) {
+      return GetBuilder<RecommendedProductController>(builder: (_) {
+        return GetMaterialApp(
+          title: 'Flutter Demo',
+          // home: MainFoodPage(),
+          // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+          initialRoute: RouteHelper.getSplashPage(),
+          getPages: RouteHelper.routes,
+        );
+      });
+    });
   }
 }
 
@@ -48,9 +50,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'FlutterApp',
-      home: const MainFoodPage()
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'FlutterApp',
+        home: const MainFoodPage());
   }
 }
