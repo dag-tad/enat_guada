@@ -1,5 +1,6 @@
 import 'package:enat_guada/pages/food/popular_food_detail.dart';
 import 'package:enat_guada/pages/food/recommended_food_detail.dart';
+import 'package:enat_guada/pages/home/home_page.dart';
 import 'package:enat_guada/pages/home/main_food_page.dart';
 import 'package:get/get.dart';
 
@@ -17,7 +18,7 @@ class RouteHelper {
   static String getCartPage() => cartPage;
 
   static List<GetPage> routes = [
-    GetPage(name: initial, page: () => MainFoodPage()),
+    GetPage(name: initial, page: () => HomePage()),
     GetPage(
         name: popularFood,
         page: () {
